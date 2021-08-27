@@ -1,0 +1,211 @@
+// Nova Tool CSS
+@import '../../node_modules/jstree/dist/themes/default/style.css';
+/*@import '../../node_modules/jstree/dist/themes/default-dark/style.css';*/
+
+// Font Awesome
+@import '~@fortawesome/fontawesome-free/scss/brands';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+
+$primary:      #346CB0;
+$secondary:    #f6f7f9;
+$body-color:                #363642;
+$subtle-level:          .08 !default;
+$subtle-level-hover:    .12 !default;
+$subtle-level-active:   .2 !default;
+$border-radius: 4px !default;
+
+$black:    #14141F;
+$white:    #ffffff;
+$text-muted:                #888c9b;
+$border-color:                rgba(#222230, .1);
+
+$input-btn-focus-color: $primary;
+$input-btn-focus-width:         1px;
+$input-btn-focus-box-shadow:    0 0 0 $input-btn-focus-width $input-btn-focus-color;
+$input-border-color:                    #c6c9d5;
+
+$custom-control-indicator-bg:                   $white;
+$custom-control-indicator-bg-size:              63% 63%;
+$custom-control-indicator-disabled-bg:          #f6f7f9;
+$custom-control-indicator-box-shadow:           0 1px 0 0 rgba(#222230, .05);
+$custom-control-indicator-focus-box-shadow:     $input-btn-focus-box-shadow;
+$custom-checkbox-indicator-icon-checked:        url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%230179A8' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath d='M6.41 0l-.69.72-2.78 2.78-.81-.78-.72-.72-1.41 1.41.72.72 1.5 1.5.69.72.72-.72 3.5-3.5.72-.72-1.44-1.41z' transform='translate(0 1)' /%3e%3c/svg%3e");
+$custom-checkbox-indicator-icon-indeterminate:  url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' fill='%230179A8' width='8' height='8' viewBox='0 0 8 8'%3e%3cpath d='M0 0v2h8v-2h-8z' transform='translate(0 3)' /%3e%3c/svg%3e");
+
+$custom-select-bg:                      linear-gradient(to bottom, $white, $secondary);
+$custom-select-focus-box-shadow:        $input-btn-focus-box-shadow;
+$custom-select-indicator:               url("data:image/svg+xml;charset=UTF-8,%3Csvg width='14' height='14' fill='%23888c9b' viewBox='0 0 1792 1792' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1408 704q0 26-19 45l-448 448q-19 19-45 19t-45-19l-448-448q-19-19-19-45t19-45 45-19h896q26 0 45 19t19 45z'/%3E%3C/svg%3E");
+
+// ==================================================
+// Custom jsTree styling
+// ==================================================
+
+.jstree {
+    // font-size: $font-size-sm;
+    .fa {
+        font-size: 0.5em;
+    }
+}
+.jstree-anchor{
+    color: inherit;
+}
+
+.jstree-default {
+    .jstree-anchor {
+        margin-top: 0;
+    }
+    .jstree-checkbox {
+        margin-top: -2px;
+    }
+
+    .jstree-hovered,
+    .jstree-wholerow-hovered {
+        color: $primary;
+        background: transparent;
+        box-shadow: none;
+        background-image: none;
+    }
+
+    .jstree-clicked,
+    .jstree-wholerow-clicked {
+        color: darken($primary, 5%);
+        background: rgba($primary, $subtle-level-active);
+        box-shadow: inset 0 0 1px $primary;
+        background-image: none;
+    }
+
+    .jstree-disabled {
+        color: $text-muted;
+    }
+}
+
+// open state
+
+
+.jstree-open > .jstree-anchor > .fa-folder:before {
+    content: "\f07c";
+}
+
+
+// jstree context
+
+.vakata-context,
+.vakata-context ul {
+    float: left;
+    box-shadow: 0 6px 12px rgba($black, .175);
+    border: 1px solid $border-color;
+    border-radius: 4px;
+    background: $white;
+    // font-size: $font-size-sm;
+    list-style: none;
+    text-align: left;
+}
+
+// arrows
+
+.jstree-default {
+    .jstree-node {
+        margin-left: 21px;
+    }
+
+    .jstree-icon {
+        display: inline-block;
+        color: $text-muted;
+        font-style: normal;
+        font-variant: normal;
+        font-size: 0.75em;
+        text-rendering: auto;
+        line-height: 1;
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+    }
+}
+
+// checkbox
+
+.jstree-default {
+    .jstree-clicked .jstree-checkbox {
+        border-color: $primary;
+
+        &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1rem;
+            height: 1rem;
+            background-image: $custom-checkbox-indicator-icon-checked;
+            background-repeat: no-repeat;
+            background-position: 35% 35%;
+            background-size: $custom-control-indicator-bg-size;
+        }
+    }
+
+    .jstree-checkbox {
+        position: relative;
+        background: $custom-select-bg;
+        border: 1px solid $input-border-color;
+        box-shadow: $custom-control-indicator-box-shadow;
+        border-radius: $border-radius;
+
+        &:empty {
+            margin: .125rem .25rem .25rem .125rem;
+            width: 1rem;
+            height: 1rem;
+        }
+
+        &.jstree-undetermined:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 1rem;
+            height: 1rem;
+            background-image: $custom-checkbox-indicator-icon-indeterminate;
+            background-repeat: no-repeat;
+            background-position: 35% 35%;
+            background-size: $custom-control-indicator-bg-size;
+        }
+    }
+
+    &.jstree-checkbox-no-clicked .jstree-clicked.jstree-hovered {
+        background: transparent
+    }
+}
+
+// search
+
+.jstree-default .jstree-search {
+    color: $body-color;
+}
+
+// flex container for buttons
+
+.flexContainer {
+    display: flex;
+}
+
+.flexContainer > .btn {
+    width: 100%;
+}
+
+.inputField {
+    flex: 1;
+}
+
+.flexContainer>.flexContainer:not(:last-child)>.btn, .flexContainer>.btn:not(:last-child) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.flexContainer>.flexContainer:not(:last-child)>.form-input, .flexContainer>.form-input:not(:last-child) {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.flexContainer>.flexContainer:not(:first-child)>.btn, .flexContainer>.btn:not(:first-child) {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
